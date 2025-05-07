@@ -1,0 +1,91 @@
+/* Timer Styles */
+.timer-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 20px;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.timer-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timer-tab {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.8;
+  padding: 8px 12px;
+  transition: opacity 0.3s;
+}
+
+.timer-tab:hover {
+  opacity: 1;
+}
+
+.timer-tab.active {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.timer-display {
+  color: white;
+  font-size: 120px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 20px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.timer-button {
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  color: #ba4949;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 16px 40px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.timer-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.timer-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.timer-info {
+  color: white;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.timer-info p {
+  margin: 4px 0;
+}
+
+@media (max-width: 600px) {
+  .timer-display {
+    font-size: 80px;
+  }
+  
+  .timer-button {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+}

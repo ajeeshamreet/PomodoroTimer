@@ -1,0 +1,18 @@
+.app {
+  background-color: #ba4949;
+  min-height: 100vh;
+  padding: 0 16px;
+}
+
+.main-content {
+  padding-bottom: 40px;
+}
+
+/* Change background color based on timer mode */
+.app.short-break {
+  background-color: #397097;
+}
+
+.app.long-break {
+  background-color: #4c6cb3;
+}
