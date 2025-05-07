@@ -32,10 +32,6 @@ function Timer() {
       // Timer finished
       setIsActive(false);
       
-      // Play notification sound (could be implemented)
-      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-      audio.play().catch(e => console.log('Audio play failed:', e));
-      
       // Handle timer completion based on current mode
       if (currentMode.name === TIMER_MODES.POMODORO.name) {
         // After Pomodoro, decide which break to take
