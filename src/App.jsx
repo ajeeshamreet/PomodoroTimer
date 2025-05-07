@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
 import Timer from './components/Timer';
-import Tasks from './components/Tasks';
 import './App.css';
 
 function App() {
@@ -10,7 +9,6 @@ function App() {
       <Header />
       <main className="main-content">
         <Timer />
-        <Tasks />
       </main>
     </div>
   );

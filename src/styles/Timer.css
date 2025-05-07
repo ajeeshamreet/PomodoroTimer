@@ -1,4 +1,10 @@
 /* Timer Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .timer-container {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 6px;
