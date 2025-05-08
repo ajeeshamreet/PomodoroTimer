@@ -64,6 +64,11 @@
   padding: 4px 12px;
 }
 
+.seticon {
+  margin: 0 0 0 4px;
+  height: 16px;
+  width: 16px;
+}
 @media (max-width: 600px) {
   .btn-text {
     display: none;

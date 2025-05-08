@@ -10,7 +10,7 @@ function Header() {
         </div>
         <div className="header-buttons">
           <button className="btn btn-secondary">
-            <span className="btn-icon">⚙️</span>
+            <span className="btn-icon"><img src="/img/config-white.png" className = "seticon"/></span>
             <span className="btn-text">Setting</span>
           </button>
           <button className="btn btn-secondary">
