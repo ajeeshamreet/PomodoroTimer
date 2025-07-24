@@ -174,13 +174,37 @@ function Timer() {
         <div className="music-player-box">
           <div className="music-player">
             <button className="music-btn" aria-label="Previous" onClick={prevTrack}>
-              <span className="music-icon">⏮️</span>
+              <span className="music-icon">
+                {/* Left chevron SVG */}
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="11" fill="none"/>
+                  <polyline points="13,7 9,11 13,15" fill="none" stroke="#222" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </button>
             <button className="music-btn play-btn premium-play-btn" aria-label="Play/Pause" onClick={playPause}>
-              <span className="music-icon">{isPlaying ? '⏸️' : <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="14" fill="#ba4949"/><polygon points="11,9 21,14 11,19" fill="white"/></svg>}</span>
+              <span className="music-icon">
+                {isPlaying ? (
+                  // Pause SVG (white bars on colored circle)
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14" cy="14" r="14" fill="#ba4949"/>
+                    <rect x="9" y="9" width="3.5" height="10" rx="1.2" fill="white"/>
+                    <rect x="15.5" y="9" width="3.5" height="10" rx="1.2" fill="white"/>
+                  </svg>
+                ) : (
+                  // Play SVG
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="14" fill="#ba4949"/><polygon points="11,9 21,14 11,19" fill="white"/></svg>
+                )}
+              </span>
             </button>
             <button className="music-btn" aria-label="Next" onClick={nextTrack}>
-              <span className="music-icon">⏭️</span>
+              <span className="music-icon">
+                {/* Right chevron SVG */}
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="11" fill="none"/>
+                  <polyline points="9,7 13,11 9,15" fill="none" stroke="#222" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </button>
             <audio
               ref={audioRef}
