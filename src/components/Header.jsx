@@ -15,9 +15,9 @@ function Header() {
             <span className="btn-icon">ℹ️</span>
             <span className="btn-text">About Us</span>
           </button>
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" onClick={() => navigate('/login')}>
             <span className="btn-icon">👤</span>
-            <span className="btn-text">Sign In</span>
+            <span className="btn-text">Login</span>
           </button>
         </div>
 

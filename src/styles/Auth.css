@@ -1,0 +1,126 @@
+.auth-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.auth-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 36px 32px 28px 32px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form h2 {
+  color: #ba4949;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.auth-form label {
+  font-weight: 500;
+  color: #5c3a3a;
+  margin-bottom: 2px;
+}
+
+.auth-form input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 8px;
+  transition: border 0.2s;
+}
+
+.auth-form input:focus {
+  border: 1.5px solid #ba4949;
+}
+
+.auth-btn {
+  background: #ba4949;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.auth-btn:hover {
+  background: #a13d3d;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 8px;
+  color: #5c3a3a;
+  font-size: 0.98rem;
+}
+
+.link {
+  color: #ba4949;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 2px;
+}
+
+.auth-error {
+  color: #ba4949;
+  background: #ffeaea;
+  border: 1px solid #ffd6d6;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  color: #444;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.google-btn:hover {
+  border: 1.5px solid #ba4949;
+  box-shadow: 0 4px 16px rgba(186,73,73,0.08);
+}
+
+.google-icon {
+  background: #fff;
+  color: #ea4335;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 1.5px solid #ea4335;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+} 
