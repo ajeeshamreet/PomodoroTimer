@@ -1,24 +1,23 @@
 import React from 'react';
 import '../styles/Header.css';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <header className="header">
-        <div className="logo">
+        <div className="logo" style={{cursor: 'pointer'}} onClick={() => navigate('/')}> 
           <span className="check-icon">✓</span>
           <h1>Pomofocus</h1>
         </div>
         <div className="header-buttons">
-          <button className="btn btn-secondary">
-            <span className="btn-icon"><img src="/img/config-white.png" className = "seticon"/></span>
-            <span className="btn-text">Setting</span>
+          <button className="btn btn-secondary" onClick={() => navigate('/about')}>
+            <span className="btn-icon">ℹ️</span>
+            <span className="btn-text">About Us</span>
           </button>
           <button className="btn btn-secondary">
             <span className="btn-icon">👤</span>
             <span className="btn-text">Sign In</span>
-          </button>
-          <button className="btn btn-icon-only">
-            <span className="btn-icon">⋮</span>
           </button>
         </div>
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Timer.css';
 
+const DEFAULT_COLORS = ['#ba4949', '#397097', '#4c6cb3', '#38858a', '#d8815c', '#b968c7', '#333333', '#f87070', '#70f3f8', '#f7f3b0'];
+
 function Timer() {
   // Timer modes and their durations in minutes
   const TIMER_MODES = {
@@ -14,6 +16,16 @@ function Timer() {
   const [isActive, setIsActive] = useState(false);
   const [currentSession, setCurrentSession] = useState(1);
   const intervalRef = useRef(null);
+
+  // Music player state
+  const [audioFiles, setAudioFiles] = useState([]);
+  const [currentTrack, setCurrentTrack] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  // Color palette state
+  const [bgColor, setBgColor] = useState('#ba4949');
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   // Reset timer when mode changes
   useEffect(() => {
@@ -49,6 +61,53 @@ function Timer() {
 
     return () => clearInterval(intervalRef.current);
   }, [isActive, timeLeft, currentMode, currentSession]);
+
+  // Dynamically load all mp3 files in public/music
+  useEffect(() => {
+    // Since we can't read the filesystem from the browser, hardcode the list for now
+    setAudioFiles([
+      '/music/mixkit-hip-hop-02-738.mp3',
+      '/music/mixkit-sun-and-his-daughter-580.mp3',
+      '/music/SF-cum.mp3',
+    ]);
+  }, []);
+
+  // Play/pause logic
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying, currentTrack]);
+
+  // Move to next track on end, loop to first
+  const handleTrackEnd = () => {
+    setCurrentTrack((prev) => (prev + 1) % audioFiles.length);
+    setIsPlaying(true);
+  };
+
+  // Controls
+  const playPause = () => {
+    setIsPlaying((p) => !p);
+  };
+  const nextTrack = () => {
+    setCurrentTrack((prev) => (prev + 1) % audioFiles.length);
+    setIsPlaying(true);
+  };
+  const prevTrack = () => {
+    setCurrentTrack((prev) => (prev - 1 + audioFiles.length) % audioFiles.length);
+    setIsPlaying(true);
+  };
+
+  // Color palette logic
+  const handleColorSelect = (color) => {
+    setBgColor(color);
+    setShowColorPicker(false);
+    document.querySelector('.app').style.backgroundColor = color;
+  };
 
   // Format time as MM:SS
   const formatTime = () => {
@@ -100,13 +159,59 @@ function Timer() {
         {formatTime()}
       </div>
       
-      <button className="timer-button" onClick={toggleTimer}>
+      <button className={`timer-button${!isActive ? ' start' : ''}`} onClick={toggleTimer}>
         {isActive ? 'PAUSE' : 'START'}
       </button>
       
       <div className="timer-info">
         <p>#{currentSession}</p>
         <p>Time to focus!</p>
+      </div>
+
+      {/* Bottom bar with two boxes */}
+      <div className="timer-bottom-bar">
+        {/* Music Player Box */}
+        <div className="music-player-box">
+          <div className="music-player">
+            <button className="music-btn" aria-label="Previous" onClick={prevTrack}>
+              <span className="music-icon">⏮️</span>
+            </button>
+            <button className="music-btn play-btn premium-play-btn" aria-label="Play/Pause" onClick={playPause}>
+              <span className="music-icon">{isPlaying ? '⏸️' : <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="14" fill="#ba4949"/><polygon points="11,9 21,14 11,19" fill="white"/></svg>}</span>
+            </button>
+            <button className="music-btn" aria-label="Next" onClick={nextTrack}>
+              <span className="music-icon">⏭️</span>
+            </button>
+            <audio
+              ref={audioRef}
+              src={audioFiles[currentTrack]}
+              onEnded={handleTrackEnd}
+              style={{ display: 'none' }}
+            />
+          </div>
+        </div>
+        {/* Color Palette Box */}
+        <div className="color-palette-box">
+          <button
+            className="color-swatch"
+            style={{ backgroundColor: bgColor }}
+            onClick={() => setShowColorPicker((v) => !v)}
+            aria-label="Choose background color"
+          />
+          {showColorPicker && (
+            <div className="color-picker-disk">
+              {DEFAULT_COLORS.map((color, idx) => (
+                <button
+                  key={color}
+                  className="color-picker-dot"
+                  style={{ backgroundColor: color, transform: `rotate(${(360 / DEFAULT_COLORS.length) * idx}deg) translate(70px) rotate(-${(360 / DEFAULT_COLORS.length) * idx}deg)` }}
+                  onClick={() => handleColorSelect(color)}
+                  aria-label={`Select color ${color}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
