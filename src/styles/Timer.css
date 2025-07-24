@@ -85,6 +85,123 @@
   margin: 4px 0;
 }
 
+.music-player-box, .color-palette-box {
+  background: rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  min-height: 60px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.music-player-box {
+  flex: 2;
+  margin-right: 16px;
+}
+.color-palette-box {
+  flex: 1;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.color-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s;
+  margin-left: auto;
+}
+.color-swatch:focus, .color-swatch:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.color-picker-disk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.color-picker-dot {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.color-picker-dot:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.timer-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 420px;
+  margin-top: 24px;
+  gap: 0;
+}
+
+/* Remove old color-palette-btn styles */
+.color-palette-btn {
+  display: none;
+}
+
+.premium-play-btn {
+  background: white;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(186,73,73,0.18);
+  margin: 0;
+  padding: 0;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.premium-play-btn:hover {
+  background: #ffeaea;
+  box-shadow: 0 6px 24px rgba(186,73,73,0.28);
+}
+.music-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.music-player .music-btn {
+  margin: 0;
+}
+
+/* Add a class for black text when showing START */
+.timer-button.start {
+  color: #111;
+}
+
 @media (max-width: 600px) {
   .timer-display {
     font-size: 80px;
@@ -93,5 +210,19 @@
   .timer-button {
     font-size: 18px;
     padding: 12px 30px;
+  }
+  .timer-bottom-bar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+  .music-player-box {
+    margin-right: 0;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  .color-palette-box {
+    width: 100%;
+    justify-content: center;
   }
 }
